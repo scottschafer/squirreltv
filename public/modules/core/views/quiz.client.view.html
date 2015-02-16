@@ -1,0 +1,45 @@
+<section data-ng-controller="QuizController">
+  <!-- Simple dropdown -->
+
+  <style>
+    .shield {
+      width: inherit;
+      height: inherit;
+      background-color: rgba(200, 200, 120, .4);
+    }
+    
+    .background {
+      white-space: nowrap;
+      padding: 20px;
+      background-color: rgba(100, 100, 205, .8);
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: 10px 10px 5px #000000;
+    }
+    
+    .playButtons {
+      font-size: 200%;
+      display: inline-block;
+    }
+  </style>
+
+  <television video-clip="clips[currentClip]" playing="playing"></television>
+
+  <!-- div class="shield fadein fadeout" ng-show="showSentence" animate-show></div -->
+
+  <div class="centered-cell slide-down slide-up" ng-show="showSentence" animate-show>
+    <div class="background centered-cell">
+      <sentence-builder ng-model="sentence" sentence-options="sentenceOptions"></sentence-builder>
+
+      <button class="btn playButtons" ng-click="replay()">
+        <span class="glyphicon glyphicon-repeat"></span>
+      </button>
+
+      <button class="btn playButtons" ng-click="nextClip()" ng-disabled="sentenceComplete&&!sentenceCorrect" ng-class="{transparent:(!sentenceComplete)}">
+        <span class="glyphicon glyphicon-check green" ng-show="sentenceCorrect"></span>
+        <span class="glyphicon glyphicon-thumbs-down red" ng-show="!sentenceCorrect"></span>
+      </button>
+    </div>
+
+  </div>
+</section>

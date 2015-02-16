@@ -1,0 +1,40 @@
+<section data-ng-controller="ExploreController">
+  <!-- Simple dropdown -->
+
+  <style>
+    .background {
+      white-space: nowrap;
+      padding: 20px;
+      background-color: rgba(160, 160, 255, .6);
+      border: 2px solid black;
+      border-radius: 20px;
+      box-shadow: 10px 10px 5px #888888;
+    }
+    
+    .playButtons {
+      font-size: 200%;
+      display: inline-block;
+    }
+  </style>
+
+  <!--
+  <div style="background-color:blue" expand-to-bottom></div>
+  -->
+  <!--
+  <div class="nav navbar-nav question-nav">
+    #{{currentClip+1}} of {{clips.length}}&nbsp;&nbsp;&nbsp;
+    <button ng-click="nextClip()">Next</button>
+  </div>
+  -->
+  
+  <div class="vbox boxItem viewport">
+    <div class="center" style="margin-bottom:0px; z-index:100">
+      <sentence-builder ng-model="sentence" sentence-options="sentenceOptions">
+      </sentence-builder>
+    </div>
+    <div class="boxItem vbox">
+      <television video-clip="clip" playing="playing"></television>
+    </div>
+  </div>
+
+</section>

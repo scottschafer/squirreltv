@@ -1,0 +1,61 @@
+<section data-ng-controller="ClipsController">
+  <div class="page-header">
+    <h1>New Clip</h1>
+  </div>
+  <div class="col-md-12">
+    <form class="form-horizontal" data-ng-submit="create()" novalidate>
+
+      <fieldset>
+        <div class="form-group">
+          <div class="controls">
+
+            <label for="text" class="control-label"><strong>Sentence that goes with this clip:</strong>
+            </label>
+            <input type="text" data-ng-model="clip.text" id="text" class="form-control" placeholder="Sentence" required>
+            <div ng-show="form.$submitted || form.text.$touched">
+              <div ng-show="form.text.$error.required">The sentence is required.</div>
+              <div ng-show="form.text.$error.text">The sentence needs to be at least three words long.</div>
+            </div>
+
+            <label for="clipId" class="control-label"><strong>YouTube video id:</strong>
+            </label>
+            <input type="text" data-ng-model="clip.clipId" id="clipId" class="form-control" placeholder="YouTubeId" required>
+            <div ng-show="form.$submitted || form.clipId.$touched">
+              <div ng-show="form.clipId.$error.required">The clip id is required.</div>
+            </div>
+
+            <label for="start" class="control-label"><strong>Clip start:</strong>
+            </label>
+            <input type="number" data-ng-model="clip.start" id="start" class="form-control" placeholder="Start" required>
+
+            <label for="length" class="control-label"><strong>Clip length:</strong>
+            </label>
+            <input type="number" data-ng-model="clip.length" id="length" class="form-control" placeholder="Length" required>
+
+            <input type="checkbox" ng-model="clip.public" id="public" name="public">
+            <label for="public" class="control-label">Clip is public</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+
+      <div style="color:blue;font-style:italic">
+        TODO:
+        <ul>
+          <li>Form validation</li>
+          <li>YouTube video browsing</li>
+          <li>Better range selection</li>
+        </ul>
+      </div>
+
+      <!--
+      <data-ng-include src="'/modules/clips/views/create-edit.html'"></data-ng-include> -->
+    </form>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<style>
+  @keyframes buttonPulse {
+    from {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+      background-color: #ffff40;
+      -webkit-box-shadow: 0 0 18px #00ff00;
+    }
+    to {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+  }
+  
+  @-moz-keyframes buttonPulse {
+    from {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+      background-color: #ffff40;
+      -webkit-box-shadow: 0 0 18px #00ff00;
+    }
+    to {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+  }
+  
+  @-o-keyframes buttonPulse {
+    from {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+      background-color: #ffff40;
+      -webkit-box-shadow: 0 0 18px #00ff00;
+    }
+    to {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+  }
+  
+  @-webkit-keyframes buttonPulse {
+    from {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+      background-color: #ffff40;
+      -webkit-box-shadow: 0 0 18px #00ff00;
+    }
+    to {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 0 9px #333;
+    }
+  }
+  
+  .pulse-button {
+    animation-name: buttonPulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    -moz-animation-name: buttonPulse;
+    -moz-animation-duration: 2s;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-name: buttonPulse;
+    -o-animation-duration: 2s;
+    -o-animation-iteration-count: infinite;
+    -webkit-animation-name: buttonPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+  }
+</style>
+
+<div class="word-column" ng-show="word.options.length > 1">
+  <div class="word-selection-container">
+    <div ng-repeat="option in word.options">
+      <button type="button" class="btn btn-default center-block word-button" ng-class="{'btn-primary':(word.selectedWord==option), 'pulse-button':(!word.selectedWord.length)}" ng-click="selectWord(option)">
+        {{option}}
+      </button>
+    </div>
+  </div>
+</div>
+
+<span class="static-word" ng-show="word.options.length == 1">
+  {{word.options[0]}}
+</span>

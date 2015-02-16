@@ -1,0 +1,28 @@
+<style>
+  .word-column {
+    font-size: 200%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  
+  .word-button {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    min-width: 100px;
+    font-size: 100%;
+    z-index: 100;
+  }
+  
+  .static-word {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 200%;
+  }
+</style>
+
+<span ng-repeat="word in sentenceOptions">
+  <word-chooser ng-model="word">
+  </word-chooser>
+</span>.

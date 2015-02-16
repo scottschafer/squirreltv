@@ -1,0 +1,101 @@
+<!--
+<section data-ng-controller="ClipsController" data-ng-init="find()">
+  <div class="page-header">
+    <h1>Clips</h1>
+  </div>
+  <div class="list-group">
+    <a data-ng-repeat="clip in clips" data-ng-href="#!/clips/{{clip._id}}" class="list-group-item">
+      <small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="clip.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="clip.user.displayName"></span>
+			</small>
+      <h4 class="list-group-item-heading" data-ng-bind="clip.text">
+      <strong data-ng-show="clip.public"> - PUBLIC</strong></h4>
+      <youtube-video video-id="clip.clipId" player-width="'200'" player-height="'120'" player-vars="
+      {
+        controls: 0,
+      showinfo: 0,
+      rel: 0,
+      autoplay: 0,
+      start:clip.start,
+      end:(clip.start + clip.length)
+      }"></youtube-video>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" data-ng-hide="!clips.$resolved || clips.length">
+    No Clips yet, why don't you <a href="/#!/clips/create">create one</a>?
+  </div>
+</section>
+-->
+<section data-ng-controller="CreateController">
+
+  <style>
+    .youTubeListContainer {
+      width: 160px;
+      display: inline-block;
+    }
+  </style>
+
+  <div ng-show="!isLoggedIn(authentication.user)">
+    <p>You must be logged in to view, edit or create your clips.</p>
+    <p><a data-ng-href="/#!/signin?next=create">Click here to sign in or sign up!</a>
+    </p>
+  </div>
+
+  <div ng-show="isLoggedIn(authentication.user)">
+
+    <section data-ng-controller="ClipsController" data-ng-init="find()">
+      <h2 class="row-fluid">
+        <span class="span6">
+          Clips
+        </span>
+        <span class="span6 pull-right">
+          <a class="btn btn-primary" data-ng-href="#!/clips/create">
+            <span class="glyphicon glyphicon-plus"></span>
+          </a>
+        </span>
+      </h2>
+
+      <div class="list-group">
+        <div data-ng-repeat="clip in clips" class="list-group-item">
+          <!-- data-ng-href="#!/clips/{{clip._id}}"  -->
+          <small class="list-group-item-text">
+				    Posted on
+				    <span data-ng-bind="clip.created | date:'medium'"></span>
+				    by
+				    <span data-ng-bind="clip.user.displayName"></span>
+            <strong data-ng-show="clip.public"> - PUBLIC</strong>
+          </small>
+
+          <h4>
+            <span class="youTubeListContainer">
+              <youtube-video video-id="clip.clipId" player-width="'80'" player-height="'60'" player-vars="{
+                  controls: 0,
+                  showinfo: 0,
+                  rel: 0,
+                  autoplay: 0,
+                  start:clip.start,
+                  end:(clip.start + clip.length)
+                }">
+              </youtube-video>
+            </span>
+            {{clip.text}}
+            <span class="span6 pull-right">
+              <a class="btn btn-primary" data-ng-href="#!/clips/{{clip._id}}/edit">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </a>
+            </span>
+          </h4>
+        </div>
+      </div>
+
+      <div class="alert alert-warning text-center" data-ng-hide="!clips.$resolved || clips.length">
+        No Clips yet, why don't you <a href="/#!/clips/create">create one</a>?
+      </div>
+    </section>
+
+  </div>
+
+</section>
