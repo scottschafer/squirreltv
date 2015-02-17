@@ -1,4 +1,4 @@
-<section data-ng-controller="ExploreController">
+<section data-ng-controller="ExploreController" style="overflow:hidden">
   <!-- Simple dropdown -->
 
   <style>
@@ -17,16 +17,7 @@
     }
   </style>
 
-  <!--
-  <div style="background-color:blue" expand-to-bottom></div>
-  -->
-  <!--
-  <div class="nav navbar-nav question-nav">
-    #{{currentClip+1}} of {{clips.length}}&nbsp;&nbsp;&nbsp;
-    <button ng-click="nextClip()">Next</button>
-  </div>
-  -->
-  
+
   <div class="vbox boxItem viewport">
     <div class="center" style="margin-bottom:0px; z-index:100">
       <sentence-builder ng-model="sentence" sentence-options="sentenceOptions">
